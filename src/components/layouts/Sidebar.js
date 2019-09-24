@@ -40,13 +40,14 @@ export const Sidebar = () => {
     <div className="sidebar__middle">
         <span>
             <FaChevronDown />
-            <h2>Projects</h2>
         </span>
+        <h2>Projects</h2>
     </div>
 
     <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
-    {showProjects && <Projects />}
+    {showProjects && 'Hello Add Project!'}
     </div>
-);
+    );
 };
+
 
