@@ -1,19 +1,20 @@
-import React from 'react';
-import { Header } from './components/layouts/Header'
+/* eslint-disable import/prefer-default-export */
+import React, { useState } from 'react';
+import { Header } from './components/layouts/Header';
 import { Content } from './components/layouts/Content';
 import { ProjectsProvider, SelectedProjectProvider } from './context';
-import './App.scss';
 
-export const App = () =>  (
-  <SelectedProjectProvider>
-    <ProjectsProvider>
-    <div className="App">
-      <Header />
-      <Content />
-    </div>
-    </ProjectsProvider>
-  </SelectedProjectProvider>
-);
+export const App = ({ darkModeDefault = false }) => {
+  const [darkMode, setDarkMode] = useState(darkModeDefault);
 
-
-export default App;
+  return (
+    <SelectedProjectProvider>
+      <ProjectsProvider>
+        <main data-testid="application" className={darkMode ? 'darkmode' : undefined}>
+          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Content />
+        </main>
+      </ProjectsProvider>
+    </SelectedProjectProvider>
+  );
+};
